@@ -1822,6 +1822,16 @@ input, select, textarea {
 					width: 48px;
 				}
 
+				/* contact 아이콘 색상 임의 적용 */
+				ul.social li a.fa-mobile-alt {
+					background-color: #2DAAE4;
+				}
+				ul.social li a.fa-envelope-open-text {
+					background-color: #C4376B;
+				}
+
+
+
 				ul.social li a.fa-twitter {
 					background-color: #2DAAE4;
 				}
