@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+
+	<update id="resetReport">
+		update board set report = 0 where bno = #{bno}
+	</update>
+
+	<select id="listAdminBoard" resultType="boardVo">
+		select * from (select
+		a.*, rownum num from
+		(select b.bno, img, title,
+		bimg, rc, dc, report,
+		tag, m.mno,
+		to_char(bdate,
+		'yyyy/mm/dd') bdate,
+		text, nickname from board
+		b,
+		bdetail bd, member m
+		where b.bno=bd.bno
+		and m.mno=b.mno and report >=
+		5
+		order by bdate desc)a)
+	</select>
+
+	<update id="updateRP">
+		update board set report = report + 1 where bno =
+		#{bno}
+	</update>
+
+	<update id="updateDC">
+		update board set dc = dc + 1 where bno = #{bno}
+	</update>
+
+	<update id="updateRC">
+		update board set rc = rc + 1 where bno = #{bno}
+	</update>
+
+	<select id="getCommentNum" resultType="Integer">
+		select count(*) from
+		comments where bno = #{bno}
+	</select>
+
+	<select id="listComments" resultType="commentsVo">
+		select c.*, nickname, img
+		from comments c, member m where m.mno = c.mno and bno = #{bno}
+		order by
+		c_ref desc, c_step
+	</select>
+
+	<insert id="insertComment">
+		insert into comments values (#{cno}, #{ctext},
+		sysdate, #{bno}, #{c_ref}, #{c_level}, #{c_step},
+		(select mno from
+		member where nickname=#{nickname}))
+	</insert>
+
+	<update id="updateStep">
+		update comments set c_step = c_step + 1 where c_ref =
+		#{c_ref} and c_step > #{c_step}
+	</update>
+
+	<select id="getComment" resultType="commentsVo">
+		select * from comments where
+		cno = #{cno}
+	</select>
+
+	<select id="getCno" resultType="Integer">
+		select nvl(max(cno), 0)+1 from
+		comments
+	</select>
+
+	<delete id="deleteBoard">
+		delete board where bno = #{bno}
+	</delete>
+
+	<update id="updateBdetail">
+		update bdetail set text=#{text} where bno = #{bno}
+	</update>
+
+	<update id="updateBoard">
+		update board set title=#{title}, tag=#{tag} where bno
+		= #{bno}
+	</update>
+
+	<insert id="insertBdetail">
+		insert into bdetail values ( (select
+		max(nvl((bno),0)
+		) from board), #{text} )
+	</insert>
+
+	<insert id="insertBoard">
+		insert into board values ( (select nvl(max(bno), 0)+1
+		from board), #{title} , to_char(sysdate,'yyyy/mm/dd'), null,
+		(select
+		mno from member where nickname = #{nickname} ), 0, 0, 0, #{tag} )
+	</insert>
+
+	<select id="getBoardCnt" resultType="Integer">
+		select count(*) from board where mno != 'c_1'
+
+		<!-- <if test="keyword != null and keyword !='' and keyworsd != 'null'"> 
+			<if test="search == 'nickname' "> and mno = (select mno from member where 
+			nickname like '%'||#{keyword}||'%') </if> <if test="search == 'title' "> 
+			and title like '%'||#{keyword}||'%' </if> <if test="search == 'text' "> and 
+			bno in (select bno from bdetail where text like '%'||#{keyword}||'%') </if> 
+			</if> -->
+
+	</select>
+
+	<select id="getBoard" resultType="boardVo">
+		select bno, title, bimg, rc,
+		dc, report, tag,
+		to_char(bdate, 'yyyy/mm/dd') bdate,
+		(select text from
+		bdetail where bno=#{bno}) text,
+		(select nickname from member where
+		mno=(select mno from board where
+		bno=#{bno}))
+		nickname,
+		(select img from
+		member where mno=(select mno
+		from board where bno=#{bno})) img
+		from
+		board where bno=#{bno}
+	</select>
+
+	<select id="listBoard" resultType="boardVo">
+		select * from (select a.*, rownum num from
+		(select b.bno, img, title,
+		bimg, rc, dc, report, tag, m.mno,
+		to_char(bdate,
+		'yyyy/mm/dd') bdate,
+		text, nickname from board b,
+		bdetail bd, member m
+		where b.bno=bd.bno
+		and
+		m.mno=b.mno and m.mno !='c_1'
+		order by bdate desc)a
+		<if test="keyword != null and keyword !='' and keyword != 'null'">
+			where ${search} like '%'||#{keyword}||'%'
+		</if>
+		) where num between #{start} and #{end}
+	</select>
+
+</mapper>

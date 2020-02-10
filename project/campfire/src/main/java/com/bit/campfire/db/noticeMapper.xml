@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notice">
+
+	<update id="updateNotice">
+		update board set title=#{title} where bno = #{bno}
+	</update>
+	
+	<update id="updateBdetail">
+		update bdetail set text=#{text} where bno = #{bno}
+	</update>
+
+	<select id="getBoard" resultType="noticeVo">
+		select bno, title, bimg,
+		to_char(bdate, 'yyyy/mm/dd') bdate, (select text from bdetail where
+		bno=#{bno}) text, (select img from member where mno=(select mno from
+		board where bno=#{bno})) img from board where bno=#{bno}
+	</select>
+
+	<select id="getNoticeCnt" resultType="Integer">
+		select count(*) from board
+		where mno = 'c_1'
+	</select>
+
+	<delete id="deleteNotice">
+		delete board where bno = #{bno}
+	</delete>
+
+	<insert id="insertNotice">
+		insert into board values ( (select nvl(max(bno), 0)+1
+		from board), #{title}, to_char(sysdate,'yyyy/mm/dd'), null, 'c_1', 0,
+		0, 0, null)
+	</insert>
+
+	<insert id="insertBdetail">
+		insert into bdetail values((select nvl(max(bno), 0)
+		from board), #{text})
+	</insert>
+
+
+
+
+	<!-- <select id="getCno" resultType="Integer"> select nvl(max(cno), 0)+1 
+		from comments </select> <update id="updateBdetail"> update bdetail set text=#{text} 
+		where bno = #{bno} </update> <update id="updateBoard"> update board set title=#{title}, 
+		tag=#{tag} where bno = #{bno} </update> -->
+
+	<select id="getNotice" resultType="noticeVo">
+		select * from board b, bdetail
+		d where b.bno=d.bno and b.bno= #{bno}
+	</select>
+
+	<select id="listNotice" resultType="noticeVo">
+		select * from (select a.*, rownum num from
+		(select b.bno, img, title,
+		bimg, rc, dc, report, tag, m.mno,
+		to_char(bdate,
+		'yyyy/mm/dd') bdate,
+		text, nickname from board b,
+		bdetail bd, member m
+		where b.bno=bd.bno
+		and
+		m.mno=b.mno and m.mno ='c_1'
+		order by bdate desc)a
+		<if test="keyword != null and keyword !='' and keyword != 'null'">
+			where ${search} like '%'||#{keyword}||'%'
+		</if>
+		) where num between #{start} and #{end}
+	</select>
+
+</mapper>
+	

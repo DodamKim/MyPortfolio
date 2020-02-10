@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Community - TIP List</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            background: #fff;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        /* #innercontentarea-search{
+            width: 500;
+            border: 1px;
+        } */
+        /* #searchFD{
+            width:200px;
+            height:50px;
+            padding:10px;
+            font-size:14px;
+            border:1px solid #ccc;
+            /* background로 배경 깔아줌
+            background:url('../images/snippet/ico_select_arrow.png') right center no-repeat; */
+            /*background-color:#fff;
+            appearance:none; /* 기본 스타일 없애기 */
+            /*-webkit-appearance:none;
+            -moz-appearance:none;
+            -o-appearance:none;
+        } */
+        select {
+            width: 15%;
+            height: 51px;
+            padding: .8em .5em;
+            margin-right: 5px;
+            border: 1px solid #555;
+            font-size: 16px;
+            font-family: inherit;
+            background: url('images/selectbox.jpg') no-repeat 95% 50%;
+            border-radius: 0px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        select::-ms-expand {
+            display: none;
+        }
+
+        #keyword {
+            width: 65%;
+            height: 24px;
+            padding: .8em .5em;
+            margin-right: 3px;
+            border: 1px solid #555;
+            font-size: 16px;
+            font-family: inherit;
+            border-radius: 0px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        
+        .btn {
+            /* background-color: #f4511e; */
+            /* background-color: #004080; */
+            /* background-color: #564b47; */
+            background-color: #00001a;
+            width: 16%;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+            margin: 4px 2px;
+            opacity: 0.9;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-new {
+            border: 1px #00001a solid;
+            border-radius: 5px;
+        }
+
+        #btnSearch:hover {opacity: 0.7}
+
+        table {
+            margin-top: 15px;
+            border-collapse: collapse;
+            width: 100%;
+          /* color: #564b47;; */
+        }
+
+        thead tr {
+            background-color: #f8f8f8;
+            border-top: 1px solid #dbdbdb;
+            font-size: small;
+        }
+            
+        th, td {
+            padding: 25px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tbody tr:hover {background-color:#f5f5f5;}
+        
+        .title {
+            padding: 30px;
+            text-align: left;
+            font-size: larger;
+            font-weight: 550;
+            cursor: pointer;
+            /* text-decoration: none; */
+        }
+
+        .title-rp {
+            padding: 30px;
+            text-align: center;
+            font-size: larger;
+            font-weight: 40S0;
+            color: #e60000;
+            text-decoration : line-through;
+            cursor: default;
+        }
+
+        #innercontentarea-new{
+            padding-top: 10px;;
+            text-align: right;
+        }
+
+        #innercontentarea-page{
+            text-align: center;
+            color: #00001a;
+            font-size: 20px;
+        }
+
+        #btnNew:hover {opacity: 0.7}
+
+        .btnPage{   
+            font-weight: 600;
+            color: #00001a;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* .m-1{
+            margin: 1rem !important;
+        } */
+        .pt-5{
+            padding-top: 3rem !important;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/0e6723bde2.js" crossorigin="anonymous"></script>
+    <script>
+    $(function(){
+        var pageNum = 1;
+        var searchType = "";
+        var searchKeyword = "";
+        var isSearch = false;
+        var data = {"pageNum":pageNum, "searchType":searchType, "searchKeyword":searchKeyword};
+        
+        var tipPageList = function (data) {
+            $("#btnPageSpan").empty();
+            $.getJSON("/tipCount", data, function(doc){
+                var totalPage = doc;
+                console.log("html 카운트 수 : "+totalPage);
+                for(var i=1; i<=totalPage; i++){
+                    var page = $("<a></a>").attr({href:"community-tip.html?pageNum="+i}).addClass("btnPage").html(i);
+                    // var page = $("<b></b>").addClass("btnPage").html(i);
+                    $("#btnPageSpan").append(page, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                }
+            });            
+        }
+        
+        var tipList = function(data, isSearch){
+            data = {"pageNum":pageNum, "searchType":searchType, "searchKeyword":searchKeyword};
+            console.log("list 불러옴");
+            console.log(location.search+" / location.search");
+            if( location.search != ""){
+                pageNum = location.search.substring(location.search.indexOf("=")+1);
+                data = {"pageNum":pageNum, "searchType":searchType, "searchKeyword":searchKeyword};
+            } 
+            console.log(data.pageNum);
+
+            $("#innercontentarea-tb tbody").empty();
+            $.getJSON("/tipList", data, function(doc){
+                var blind = "신고 5회로 인하여 블라인드 처리된 글 입니다.";
+                $.each(doc, function(idx, a){
+                    var tr = $("<tr></tr>");
+                    var loc = "community-tip-detail.html?tip_id="+a._id;
+                    if( a.report >= 5) {
+                        if(isSearch){
+                            return;
+                        } else {
+                            var title = $("<td colspan='5'></td>").html(blind).addClass("title-rp");
+                            $(tr).append(title);
+                            $("#innercontentarea-tb tbody").append(tr);
+                            return;
+                        }
+                    } else {
+                        var title = $("<td></td>").html(a.title).attr({onclick:"location.href='"+loc+"'"}).addClass("title");
+                    }
+                    var writer = $("<td></td>").html(a.writer);
+                    var date = $("<td></td>").html(a.date.substring(0,10));
+                    var rc = $("<td></td>").html(a.rc);
+                    var dc = $("<td></td>").html(a.dc);
+                    $(tr).append(title, writer, date, rc, dc);
+                    $("#innercontentarea-tb tbody").append(tr);
+                });
+            });
+        }
+        
+        tipList(data, isSearch);
+        tipPageList(data);
+        
+        $("#btnSearch").click(function(){
+            pageNum = 1;
+            searchType = $("#searchFD").val();
+            searchKeyword = $("#keyword").val();
+            // 특수문자
+            // var specialC = /[~!@\#$%^&*\()\-=+_'\;<>0-9\/.\`:\"\\,\[\]?|{}]/gi;
+            var specialC = /[~!@\#$%^&*\()\-=+_'\;<>\/.\`:\"\\,\[\]?|{}]/gi;
+            // 미완성된 한글
+            var nonKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
+            // 키워드 내 공백 제거
+            searchKeyword = searchKeyword.replace(/(\s*)/g,"");
+            if(searchKeyword == ""){
+                var str = "검색을 원하는 단어를 입력해주세요."
+                alert(str);
+            } else if( searchKeyword.match(specialC)){
+                var str = "특수문자는 입력하실 수 없습니다.\r\nex) ~!@#$%^&*()-=_+[]{}\'.\",;:/?<>|"
+                alert(str);
+                return;
+            } else if( searchKeyword.match(nonKorean)){
+                var str = "완성된 한글로 정확하게 입력해주세요.";
+                alert(str);
+            }          
+            data = {"pageNum":pageNum, "searchType":searchType, "searchKeyword":searchKeyword};
+            isSearch = true;
+            console.log("검색버튼 누름 : "+pageNum +" / "+searchType+" / "+searchKeyword+" /  isSearch:"+isSearch);
+            tipList(data, isSearch);
+            tipPageList(data);
+        });
+
+        var asdf = function(){
+            var str = $("#3").val();
+            alert(str);
+        }
+    });
+    </script>
+</head>
+<body>
+    <div id="contentarea">
+        <div id="innercontentarea-search" class="pt-5">
+            <form>
+                <span id="selSP">
+                    <select name="searchFD" id="searchFD">
+                        <option value="" selected disabled>[Category]</option>
+                        <option value="title">Title</option>
+                        <option value="writer">Writer</option>
+                        <option value="content">Content</option>
+                    </select>
+                </span>
+                <span id="inputSP">
+                    <input type="text" name="keyword" id="keyword">
+                </span>
+                <span id="btnSP">
+                    <button type="button" id="btnSearch" class="btn">검색하기</button>    
+                </span>
+            </form>
+        </div>
+        <div id="innercontentarea">
+            <table id="innercontentarea-tb">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Writer</th>
+                        <th>Date</th>
+                        <th>RC</th>
+                        <th>DC</th>
+                    </tr>
+                </thead>
+                <!-- <tbody id="innercontentarea-tb"></tbody> -->
+                <tbody></tbody>
+            </table>
+        </div>
+        <div id="innercontentarea-new">
+            <button type="button" id="btnNew" onclick="location.href='community-tip-insert.html'" class="btn btn-new">NEW</button>
+        </div>
+        <div id="innercontentarea-page">
+            <i class="fas fa-angle-double-left"></i>
+            &nbsp;&nbsp;
+            <i class="fas fa-angle-left"></i>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span id="btnPageSpan"></span>
+            &nbsp;&nbsp;
+            <i class="fas fa-angle-right"></i>
+            &nbsp;&nbsp;
+            <i class="fas fa-angle-double-right"></i>
+        </div>
+    </div>
+</body>
+</html>

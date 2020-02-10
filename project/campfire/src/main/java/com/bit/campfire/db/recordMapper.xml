@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="record">
+
+	<!-- 방문자 통계 관련 일처리 -->
+	<insert id="insertData">
+		insert into data values 
+		( (select nvl(count(*)+1, 0) from data), sysdate, #{visit}, #{play}, 'c_1' )
+	</insert>
+
+	<insert id="insertTempVisit">
+		insert into tempdata values ( seq_no.nextval,
+		sysdate, 0 )
+	</insert>
+	
+	<select id="getTodayVisit">
+		select count(*) from tempdata where lv = 0
+	</select>
+	
+	<insert id="insertTempPlay">
+		insert into tempdata values ( seq_no.nextval,
+		sysdate, 1 )
+	</insert>
+	
+	<select id="getTodayPlay">
+		select count(*) from tempdata where lv = 1
+	</select>
+
+	<delete id="deleteAll">
+		delete tempdata
+	</delete>
+
+	<!-- 랭킹 페이지 관련 일처리 -->
+	<select id="listRecord" resultType="recordVo">
+		select * from
+		(select rownum num, r.* from
+		(select rno, to_char(rdate,
+		'yyyy/mm/dd') rdate,
+		rtime, m.mno, img, nickname
+		from record rd, member
+		m
+		where m.mno=rd.mno
+		<!-- <if test="today != null and today !='' "> and rdate=sysdate </if> -->
+		order by rtime)r )
+		where num <![CDATA[<]]>
+		11
+	</select>
+
+	<select id="todayRecord" resultType="recordVo">
+		select * from
+		(select rownum num, r.* from
+		(select rno, to_char(rdate,
+		'yyyy/mm/dd') rdate,
+		rtime, m.mno, img, nickname
+		from record rd, member
+		m
+		where m.mno=rd.mno
+		and rdate = sysdate 
+		<!-- like '%09/10%' -->
+		order by rtime)r )
+		where num <![CDATA[<]]>
+		11
+	</select>
+
+</mapper>
