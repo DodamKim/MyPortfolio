@@ -26,6 +26,39 @@
 				margin: 20px;
 				box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.15), 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
 			}
+
+			.row-project {
+				/* display: flex;
+				flex-wrap: nowrap; */
+				box-sizing: border-box;
+				align-items: stretch;
+				margin-bottom: 50px;
+				text-align: left;
+			}
+
+			.row-project-div {
+				display: block;
+			}
+
+			.r-p-d-article {
+				display: inline;
+			}
+			.r-p-d-article {
+				display: inline;
+			}
+
+			.contact-info {
+				text-align: center;
+				display: block;
+			}
+
+			.contact-info > div {
+				padding: 10px;
+				margin: 10px;
+
+			}
+
+
 		</style>
 	</head>
 	<body class="is-preload">
@@ -49,20 +82,16 @@
 							<span class="image fit"><img src="images/pic11.jpg" alt="" /></span>
 						</div>
 						<div class="col-8 col-7-large col-12-medium">
-							<!-- <header>
-								<h1>Hi. I'm <strong>Jane Doe</strong>.</h1>
-							</header>
-							<p>And this is <strong>Miniport</strong>, a free, fully responsive HTML5 site template designed by <a href="http://twitter.com/ajlkn">AJ</a> for <a href="http://html5up.net">HTML5 UP</a> &amp; released under the <a href="http://html5up.net/license">CCA license</a>.</p> -->
 							<header>
 								<h1><strong>Hello, World!</strong></h1>
 							</header>
 							<p>
 								반갑습니다!<br>
 								'잘 하고자 노력하는 개발자'를 지향하는 <strong>ㄱㅅㅇ</strong>의 공간입니다.<br>
-								<!-- #developer #seoul #jeju #female -->
-								<sub>#developer #seoul #jeju #female</sub><br>
+								<sub>#developer&nbsp;&nbsp;#new employee&nbsp;&nbsp;#seoul&nbsp;&nbsp;#jeju&nbsp;&nbsp;#female</sub><br>
 							</p>
-							<a href="#about" class="button large scrolly">저는,</a>
+							<!-- <a href="#about" class="button large scrolly">저는,</a> -->
+							<a href="#about" class="button large scrolly">Go to 'About'</a>
 						</div>
 					</div>
 				</div>
@@ -73,45 +102,41 @@
 				<div class="container">
 					<header>
 						<h2>About Me</h2>
-						<p>잘 하고자 노력하는 개발자</p>
 					</header>
 					<div class="row aln-center">
 						<div class="col-4 col-6-medium col-12-small">
 							<section class="box style1">
+								<span class="icon solid featured fa-address-card"></span>
+								<p>
+									<strong>이름.&nbsp;&nbsp;&nbsp;김수연</strong><br>
+									<strong>지역.&nbsp;&nbsp;&nbsp;서울 / 제주</strong><br>
+									<strong>경력.&nbsp;&nbsp;&nbsp;신입</strong><br>
+								</p>
+							</section>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<section class="box style1">
 								<span class="icon solid featured fa-graduation-cap"></span>
-								<h3>상명대학교 졸업</h3>
-								<p>2009.03 ~ 2014.02</p>
-								<p>상명대학교 생명과학과 학사 졸업</p>
+								<h3>상명대 졸업</h3>
+								<p>
+									2009.03 ~ 2014.02<br>
+									<strong>상명대학교 생명과학과 학사 졸업</strong>
+								</p>
 							</section>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
 							<section class="box style1">
 								<span class="icon solid featured fa-book"></span>
 								<h3>비트캠프 수료</h3>
-								<p>2019.05 ~ 2019.11</p>
-								<p>UI/UX 기반의 자바개발자 양성과정 수료</p>
+								<p>
+									2019.05 ~ 2019.11</br>
+									<strong>UI/UX 기반의 자바개발자 양성과정 수료</strong>
+								</p>
 							</section>
 						</div>
-						<!-- <div class="col-4 col-6-medium col-12-small">
-							<section class="box style1">
-								<span class="icon solid featured fa-camera-retro"></span>
-								<h3>Lorem dolor tempus</h3>
-								<p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet consequat lorem dolore.</p>
-							</section>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<section class="box style1">
-								<span class="icon featured fa-thumbs-up"></span>
-								<h3>Feugiat posuere</h3>
-								<p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet consequat lorem dolore.</p>
-							</section>
-						</div> -->
 					</div>
 					<footer>
-						<p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
-						<!-- <a href="#skills" class="button large scrolly">See some of my recent work</a> -->
 						<a href="#skills" class="button large scrolly">Go to 'Skills'</a>
-						<a href="#project" class="button large scrolly">Go to 'Project'</a>
 					</footer>
 				</div>
 			</article> 
@@ -159,8 +184,7 @@
 					</div>
 
 					<footer>
-						<p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
-						<a href="#project" class="button large scrolly">See some of my recent work</a>
+						<a href="#project" class="button large scrolly">Go to 'Project'</a>
 					</footer>
 				</div>
 			</article>
@@ -170,59 +194,100 @@
 				<div class="container">
 					<header>
 						<h2>Project</h2>
-						<p>Here’s some stuff I made recently.</p>
 					</header>
-					<div class="row">
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="port/test01.html" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-								<h3><a href="#">Magna feugiat</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
+					<div class="row-project">
+						<div class="row-project-div">
+							<article class="box-pj style2">
+								<table>
+									<caption>
+										<h3><a href="project01.html">Adventure of Rabbit!</a></h3>
+									</caption>
+									<tbody>
+										<tr>
+											<td class="pj-img" rowspan="7">
+												<a href="project01.html">
+													<img src="images/pj01.png" class="image"/></a>
+											</td>
+											<td class="left">프로젝트명. </td>
+											<td><ul><li>토끼의 모험</li></ul></td>
+										</tr>
+										<tr>
+											<td class="left">프로젝트목표. </td>
+											<td><ul><li>플랫폼 형식의 웹 게임 제작 및 해당 게임을 서비스하는 웹사이트 구현</li></ul></td>
+										</tr>
+										<tr>
+											<td class="left">팀명. </td>
+											<td><ul><li>캠프파이어</li></ul></td>
+										</tr>
+										<tr>
+											<td class="left">참여인원. </td>
+											<td><ul><li>총 3명 / 김수연, 이선정, 김명섭</li></ul></td>
+										</tr>
+										<tr>
+											<td class="left">개발기간. </td>
+											<td><ul><li>2019.09.16 ~ 2019.11.20</li></ul></td>
+										</tr>
+										<tr>
+											<td class="left">개발환경. </td>
+											<td>
+												<ul>
+													<li>적용 기술 및 도구</li>
+													<li>&nbsp;&nbsp;&nbsp;&nbsp;- Java, Javascript, Spring, Mybatis, Ajax, Phaser, Node.js</li>
+													<li>DBMS</li>
+													<li>&nbsp;&nbsp;&nbsp;&nbsp;- OracleDB, MongoDB</li>
+												</ul>
+											</td>
+										</tr>
+										<tr>
+											<td class="left">담당업무. </td>
+											<td>
+												<ul>
+													<li>게임 제작</li>
+													<li>웹] 게임소개 및 메인 page</li>
+													<li>웹] mongoDB & node.js를 이용한 커뮤니티 tip 게시판</li>
+													<li>웹 시연 영상 편집</li>
+													<li>게임 시연 영상 편집</li>
+												</ul>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="3" class="bts">
+												<button id="bt-slide-view" class="">PPT Slide View</button>
+												<!-- <button id="bt-slide-close" class="bt-remove">PPT Detail Close</button> -->
+												<button id="bt-web-view" class="">Web Pilot Video</button>
+												<button id="bt-game-view" class="">Game Pilot Video</button>
+												<!-- <button id="bt-go-game" onclick="window.open('https://kbcm5.csb.app/', '_blank', 'width=800, height=600, location=no,status=no,scrollbars=yes' );" >Play Game</button> -->
+												<button id="bt-go-game" >Play Game</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div id="slide-view" class="slide-dv">
+									<div id="slide-ct" class="slideshow-container">
+										<div>
+											<b class="icon solid fa-angle-left prev" onclick="plusSlides(-1)"></b>
+											<b class="icon solid fa-angle-right next" onclick="plusSlides(1)"></b>
+										</div>
+									</div>
+									<div id="slide-dot" style="text-align:center">
+										<!-- <span class="dot" onclick="currentSlide(1)"></span> -->
+									</div>
+								</div>
+								<div id="web-view" class="web-dv">
+									<video src="video/main-home-intro.mp4" preload="auto" autoplay="true" loop="loop"
+									muted="muted" style="width: 100%;"></video>
+								</div>
+								<div id="game-view" class="game-dv">
+									<video src="video/game-introduce02.mp4" preload="auto" autoplay="true" loop="loop"
+									muted="muted" style="width: 50%;"></video>								</div>
 							</article>
 						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="test02.html" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-								<h3><a href="#">Veroeros primis</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
-							</article>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-								<h3><a href="#">Lorem ipsum</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
-							</article>
-						</div>
-
-						<!-- <div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-								<h3><a href="#">Tempus dolore</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
-							</article>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-								<h3><a href="#">Feugiat aliquam</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
-							</article>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/pic06.jpg" alt="" /></a>
-								<h3><a href="#">Sed amet ornare</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
-							</article>
-						</div> -->
 					</div>
 					<footer>
-						<p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
 						<a href="#contact" class="button large scrolly">Go to 'Contact'</a>
 					</footer>
 				</div>
-			</article>
+			</article>										
 
 		<!-- Contact -->
 			<article id="contact" class="wrapper style4">
@@ -232,56 +297,28 @@
 						<hr />
 					</header>
 					<div class="row">
-						<!-- <div class="col-12">
-							<form method="post" action="#">
-								<div class="row">
-									<div class="col-6 col-12-small">
-										<input type="text" name="name" id="name" placeholder="Name" />
-									</div>
-									<div class="col-6 col-12-small">
-										<input type="text" name="email" id="email" placeholder="Email" />
-									</div>
-									<div class="col-12">
-										<input type="text" name="subject" id="subject" placeholder="Subject" />
-									</div>
-									<div class="col-12">
-										<textarea name="message" id="message" placeholder="Message"></textarea>
-									</div>
-									<div class="col-12">
-										<ul class="actions">
-											<li><input type="submit" value="Send Message" /></li>
-											<li><input type="reset" value="Clear Form" class="alt" /></li>
-										</ul>
-									</div>
-								</div>
-							</form>
-						</div> -->
 						<div class="col-12">
 							<ul class="social">
-								<!-- <li><button href="#" class="icon solid fa-mobile-alt"></button><span class="label">Cellphone</span></button></li>
-								<li><button href="#" class="icon brands fa-github"></button><span class="label">Github</span></button></li> -->
-								<li><a href="#" class="icon solid fa-mobile-alt"><span class="label">Cellphone</span></a></li>
-								<li><a href="#" class="icon solid fa-envelope-open-text"><span class="label">Cellphone</span></a></li>
-								<li><a href="https://github.com/DodamKim/MyPortfolio" class="icon brands fa-github"><span class="label">Github</span></a></li>
-
-								<!-- <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-								<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-								<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-								<li><a href="#" class="icon brands fa-tumblr"><span class="label">Tumblr</span></a></li>
-								<li><a href="#" class="icon brands fa-google-plus"><span class="label">Google+</span></a></li>
-								<li><a href="#" class="icon solid fa-rss"><span>RSS</span></a></li>
-								<li><a href="#" class="icon brands fa-instagram"><span>Instagram</span></a></li>
-								<li><a href="#" class="icon brands fa-foursquare"><span>Foursquare</span></a></li>
-								<li><a href="#" class="icon brands fa-skype"><span>Skype</span></a></li>
-								<li><a href="#" class="icon brands fa-soundcloud"><span>Soundcloud</span></a></li>
-								<li><a href="#" class="icon brands fa-youtube"><span>YouTube</span></a></li>
-								<li><a href="#" class="icon brands fa-blogger"><span>Blogger</span></a></li>
-								<li><a href="#" class="icon brands fa-flickr"><span>Flickr</span></a></li>
-								<li><a href="#" class="icon brands fa-vimeo"><span>Vimeo</span></a></li> -->
+								<li id="li-location">
+									<a href="#ct-location" class="icon solid fa-home" title="Location"></a>
+								</li>
+								<li id="li-phone">
+									<a href="#ct-phone" class="icon solid fa-mobile-alt" title="Phone"><span class="label">Cellphone</span></a>
+								</li>
+								<li id="li-email">
+									<a href="#ct-email" class="icon solid fa-envelope" title="Email"><span class="label">Email</span></a>
+								</li>
+								<li id="li-git"><a href="https://github.com/DodamKim/MyPortfolio" class="icon brands fa-github" title="Github"><span class="label">Github</span></a></li>
 							</ul>
+
+							<div class="contact-info">
+								<div id="ct-location"><h3>Location.&nbsp;&nbsp;&nbsp; 서울특별시 강서구</h3></div>
+								<div id="ct-phone"><h3>Cellphone.&nbsp;&nbsp;&nbsp; +82 10-2525-0710</h3></div>
+								<div id="ct-email"><h3>Email.&nbsp;&nbsp;&nbsp; vt.kims4@gmail.com</h3></div>
+							</div>
 							<hr />
 						</div>
+
 					</div>
 					<footer>
 						<ul id="copyright">
@@ -299,5 +336,141 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script src="https://kit.fontawesome.com/0e6723bde2.js" crossorigin="anonymous"></script>
+			<script>
+
+			function slideView() {
+				$("#slide-ct").empty();
+				$("#slide-dot").empty();
+				for (var i=0; i< 41; i++) {
+					var sImg = $("<img />").attr("src","images/ppt/ppt"+i+".png").addClass("image");
+					var sPg = $("<div></div>").addClass("text").text("PPT Slide "+(i+1)+" page");
+					var sDiv = $("<div></div>").addClass("mySlides fade").append(sImg, sPg);
+					$("#slide-ct").append(sDiv);
+
+					// var sDot = $("<span></span>").addClass("dot").attr("onclick", "currentSlide("+(i+1)+")");
+					var sDot = $("<span></span>").addClass("dot").attr({onclick:"currentSlide("+(i+1)+")", title:(i+1)+"page"});
+					$("#slide-dot").append(sDot);
+				}
+				var pre = $("<b></b>").addClass("icon solid fa-angle-left prev").attr("onclick", "plusSlides(-1)");
+				var nex = $("<b></b>").addClass("icon solid fa-angle-right next").attr("onclick", "plusSlides(1)");
+				var arr = $("<div></div").append(pre, nex);
+				$("#slide-ct").append(arr);
+			} 
+
+			function webView() {
+				$("#web-view").empty();
+				var vd = $("<video >").attr({
+					src:"video/main-home-intro.mp4", 
+					preload:"auto", 
+					autoplay:"true", 
+					loop:"loop", 
+					muted:"muted"
+					}).addClass("video");
+				$("#web-view").append(vd);
+			}
+
+			function gameView() {
+				$("#game-view").empty();
+				var vd = $("<video >").attr({
+					src:"video/game-introduce02.mp4", 
+					preload:"auto", 
+					autoplay:"true", 
+					loop:"loop", 
+					muted:"muted"
+					}).addClass("video");
+				$("#game-view").append(vd);
+			}
+
+			$(function(){
+				$("#bt-slide-view").click(function(){
+					slideView();
+					$("#slide-view").slideDown("fast");
+					currentSlide(1);
+					location.href="#bt-slide-view";
+					$("#web-view").empty();
+					$("#game-view").empty();
+				});
+
+				$("#bt-web-view").click(function(){
+					webView();
+					$("#web-view").slideDown("fast")
+					location.href="#bt-web-view";
+					$("#slide-view").empty();
+					$("#game-view").empty();
+				});
+
+				$("#bt-game-view").click(function(){
+					gameView();
+					$("#game-view").slideDown("fast");
+					location.href="#bt-game-view";
+					$("#slide-view").empty();
+					$("#web-view").empty();
+				});
+
+				$("#bt-go-game").click(function(){
+					//window.open('about:blank').location.href="project01.html";
+					//window.open('about:blank').location.href="https://kbcm5.csb.app/";
+					location.href="https://kbcm5.csb.app/";
+				}); 
+
+
+
+				$("#ct-location").hide();
+				$("#ct-phone").hide();
+				$("#ct-email").hide();
+
+				$("#li-location").click(function(){
+					$("#ct-location").show();
+					$("#ct-phone").hide();
+					$("#ct-email").hide();
+				});
+				$("#li-phone").click(function(){
+					$("#ct-phone").show();
+					$("#ct-location").hide();
+					$("#ct-email").hide();
+				});
+				$("#li-email").click(function(){
+					$("#ct-email").show();
+					$("#ct-location").hide();
+					$("#ct-phone").hide();
+				});
+				$("#li-git").click(function(){
+					$("#ct-location").hide();
+					$("#ct-phone").hide();
+					$("#ct-email").hide();
+				});
+			});
+
+			var slideIndex = 1;
+			showSlides(slideIndex);
+
+			function plusSlides(n) {
+			showSlides(slideIndex += n);
+			}
+
+			function currentSlide(n) {
+			showSlides(slideIndex = n);
+			}
+
+			function showSlides(n) {
+				var i;
+				var slides = $(".mySlides");
+				var dots = $(".dot");
+				if ( n > slides.length ) {
+					slideIndex = 1
+				}
+				if ( n < 1 ) {
+					slideIndex = slides.length
+				}
+				for ( i=0; i < slides.length; i++) {
+					slides[i].style.display = "none";
+				}
+				for ( i=0; i < slides.length; i++) {
+					dots[i].className = dots[i].className.replace(" active", "");
+				}
+				slides[slideIndex-1].style.display = "block";  
+				dots[slideIndex-1].className += " active";
+			}
+			</script>
 	</body>
 </html>
