@@ -229,6 +229,22 @@ input, select, textarea {
 		width: 1200px;
 	}
 
+		.container > .row-img {
+			display: flex;
+			flex-wrap: nowrap;
+			box-sizing: border-box;
+			align-items: stretch;
+			justify-content: center;
+			margin-bottom: 30px;
+		}
+
+			.container > .row-img > .skills-img {
+				width: 10%;
+				border-radius: 15%;
+				margin: 20px;
+				box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.15), 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+			}
+
 		.container.medium {
 			width: 900px;
 		}
@@ -283,6 +299,20 @@ input, select, textarea {
 		}
 
 /* Row */
+
+	.row-project {
+		display: flex;
+		flex-wrap: wrap;
+		box-sizing: border-box;
+		align-items: stretch;
+	}
+		.row-project > * {
+			box-sizing: border-box;
+		}
+
+		.row-project > .rp-div {
+			display: block;
+		}
 
 	.row {
 		display: flex;
@@ -419,6 +449,17 @@ input, select, textarea {
 			width: 100%;
 		}
 
+			/* 추가 */
+			.row > .col-12 > .contact-info {
+				text-align: center;
+				display: block;
+			}
+
+				.row > .col-12 > .contact-info div {
+					padding: 10px;
+					margin: 10px;
+				}
+
 		.row > .off-12 {
 			margin-left: 100%;
 		}
@@ -473,6 +514,15 @@ input, select, textarea {
 				.row.gtr-50.gtr-uniform > * {
 					padding-top: 12.5px;
 				}
+
+		.row-project {
+			margin-top: -25px;
+			margin-left: -25px;
+		}
+
+			.row-project > * {
+				padding: 25px 0 0 25px;
+			}
 
 		.row {
 			margin-top: -25px;
@@ -1969,42 +2019,47 @@ input, select, textarea {
 		width: 100%;
 	}
 
-
-		.box-pj.style2 table h3 {
-			margin-bottom: 1.25em;
+		.box-pj.style2 > table {
+			width: 100%;
 		}
+
+			.box-pj.style2 table h3 {
+				margin-bottom: 1.25em;
+			}
 
 			.box-pj.style2 table tbody {
 				text-align: left;
 			}
-
-				.box-pj.style2 table tbody .pj-img {
-					width: 35%;
-					vertical-align: top;
-					padding-right: 1em;
-					}
-
-					.box-pj.style2 table tbody .pj-img .image {
-						width: 100%;
-					}
-
-				.box-pj.style2 table tbody .td {
+			
+				.box-pj.style2 table tbody tr td {
 					font-size: x-larger;
 				}
-				.box-pj.style2 table tbody .left {
-					text-align: right;
-				}
 
-				.box-pj.style2 table tbody ul {
-					list-style: none;
-				}
-
-				.box-pj.style2 table tbody .bts {
-					text-align: center;
-				}
-					.box-pj.style2 table tbody .bts .bt-remove {
-						display: none;
+					.box-pj.style2 table tbody tr td.pj-img {
+						width: 35%;
+						vertical-align: top;
+						padding-right: 1em;
 					}
+
+						.box-pj.style2 table tbody tr td.pj-img .image {
+							width: 100%;
+						}
+
+					.box-pj.style2 table tbody tr td.left {
+						text-align: right;
+					}
+
+					.box-pj.style2 table tbody tr td > ul {
+						list-style: none;
+					}
+
+					.box-pj.style2 table tbody tr td.bts {
+						text-align: center;
+					}
+
+						.box-pj.style2 table tbody tr td.bts .bt-remove {
+							display: none;
+						}
 
 		/* 
 		.box-pj.style2 .slide-dv-active,
@@ -2013,33 +2068,33 @@ input, select, textarea {
 			display: block;
 		} */
 
-		.box-pj.style2 .slide-dv,
-		.box-pj.style2 .web-dv,
-		.box-pj.style2 .game-dv {
+		.box-pj.style2 > .slide-dv,
+		.box-pj.style2 > .web-dv,
+		.box-pj.style2 > .game-dv {
 			display: none;
 			width: 100%;
 			padding: 0.5em;
 		}
 
-			.box-pj.style2 .web-dv .video {
+			.box-pj.style2 > .web-dv > .video {
 				width: 100%;
 			}
 
-			.box-pj.style2 .game-dv .video{
+			.box-pj.style2 > .game-dv > .video{
 				width: 70%;
 			}
 
-			.box-pj.style2 .slide-dv .slideshow-container {
+			.box-pj.style2 > .slide-dv > .slideshow-container {
 				position: relative;
 			}
 
-				.box-pj.style2 .slide-dv .slideshow-container .mySlides {
+				.box-pj.style2 > .slide-dv > .slideshow-container > .mySlides {
 					background-image: url("images/ppt/ppt0.png");
 				}
 			
 			/* Next & previous buttons */
-			.box-pj.style2 .slide-dv .slideshow-container .prev,
-			.box-pj.style2 .slide-dv .slideshow-container .next {
+			.box-pj.style2 > .slide-dv > .slideshow-container > div > .prev,
+			.box-pj.style2 > .slide-dv > .slideshow-container > div > .next {
 				cursor: pointer;
 				position: absolute;
 				top: 50%;
@@ -2054,13 +2109,13 @@ input, select, textarea {
 				z-index: 1000;
 			}
 
-			.box-pj.style2 .slide-dv .slideshow-container .prev {
+			.box-pj.style2 > .slide-dv > .slideshow-container > div > .prev {
 				left: 0;
 				border-radius: 0 3px 3px 0;
 			}
 
 			/* Position the "next button" to the right */
-			.box-pj.style2 .slide-dv .slideshow-container .next {
+			.box-pj.style2 > .slide-dv > .slideshow-container > div > .next {
 				right: 0;
 				border-radius: 3px 0 0 3px;
 			}
