@@ -378,28 +378,30 @@
 
 			$(function(){
 				$("#bt-slide-view").click(function(){
+					$("#web-view").empty();
+					$("#game-view").empty();
 					slideView();
 					$("#slide-view").slideDown("fast");
 					currentSlide(1);
 					location.href="#bt-slide-view";
-					$("#web-view").empty();
-					$("#game-view").empty();
 				});
 
 				$("#bt-web-view").click(function(){
+					$("#slide-ct").empty();
+					$("#slide-dot").empty();
+					$("#game-view").empty();
 					webView();
 					$("#web-view").slideDown("fast")
 					location.href="#bt-web-view";
-					$("#slide-view").empty();
-					$("#game-view").empty();
 				});
 
 				$("#bt-game-view").click(function(){
+					$("#slide-ct").empty();
+					$("#slide-dot").empty();
+					$("#web-view").empty();
 					gameView();
 					$("#game-view").slideDown("fast");
 					location.href="#bt-game-view";
-					$("#slide-view").empty();
-					$("#web-view").empty();
 				});
 
 				$("#bt-go-game").click(function(){
