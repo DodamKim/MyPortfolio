@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Phaser 3 Template</title>
+
+    <style>
+      html,
+      body,
+      #game-container {
+        margin: 0;
+        padding: 0;
+      }
+
+      #game-container {
+        min-width: 100vw;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #game-container > canvas {
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="game-container"></div>
+    <script src="./js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+      // 웹페이지로 데이터 보내기 위한 코드
+      $.noConflict();
+
+      jQuery(function() {
+        setInterval(function() {
+          var totalTime = jQuery("#totalTime").val();
+
+          console.log(totalTime);
+
+          // function myCallback(r) {
+          //   console.log(r);
+          // }
+
+          jQuery.ajax({
+            url: "http://172.20.10.4:8088/sendRecord?totalTime=" + totalTime,
+            dataType: "jsonp"
+          });
+        }, 1000);
+      });
+      // jQuery(function() {
+      //   setInterval(function() {
+      //     //var data = { totalTime: "ok" };
+      //     console.log("ok");
+      //     jQuery.ajax({
+      //       url: "https://203.236.209.91:8088/test.do",
+      //       data: { msg: "통신됐나요??" },
+      //       dataType: "jsonp",
+      //       jsonpCallback: "pro",
+      //       //method: "GET",
+      //       success: function(re) {
+      //         console.log("결과 :" + re);
+      //       }
+      //     });
+      //   }, 1000);
+      // });
+    </script>
+
+    <form id="F">
+      <input type="text" id="totalTime" />
+    </form>
+  </body>
+</html>
