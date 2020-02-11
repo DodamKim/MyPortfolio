@@ -229,21 +229,41 @@ input, select, textarea {
 		width: 1200px;
 	}
 
-		.container > .row-img {
-			display: flex;
-			flex-wrap: nowrap;
-			box-sizing: border-box;
-			align-items: stretch;
-			justify-content: center;
-			margin-bottom: 30px;
+		.container > .row > .col-12 > .dv-skills {
+			display: block;
+			text-align: center;
 		}
+		
+			.container > .row > .col-12 > .dv-skills > .dv-skills-img {
+				justify-content: center; 
+				display: block;
+				margin-bottom: 1em;
+			}
+		
+				.container > .row > .col-12 > .dv-skills > .dv-skills-img > img {
+					width: 100px;
+					border-radius: 15%;
+					margin: 20px;
+					box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.15), 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+				}
 
-			.container > .row-img > .skills-img {
+			.container > .row > .col-12 > .dv-skills > .dv-skills-info {
+				display: block;
+				padding: 0 15% 0 15%;
+				margin-bottom: 3em;
+			}
+			
+				.container > .row > .col-12 > .dv-skills > .dv-skills-info > ul{
+					list-style: square;
+					list-style-position: inside;
+				}
+
+			/*.container > .skills-img > .skills-img {
 				width: 10%;
 				border-radius: 15%;
 				margin: 20px;
 				box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.15), 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
-			}
+			}*/
 
 		.container.medium {
 			width: 900px;
@@ -299,20 +319,6 @@ input, select, textarea {
 		}
 
 /* Row */
-
-	.row-project {
-		display: flex;
-		flex-wrap: wrap;
-		box-sizing: border-box;
-		align-items: stretch;
-	}
-		.row-project > * {
-			box-sizing: border-box;
-		}
-
-		.row-project > .rp-div {
-			display: block;
-		}
 
 	.row {
 		display: flex;
@@ -514,15 +520,6 @@ input, select, textarea {
 				.row.gtr-50.gtr-uniform > * {
 					padding-top: 12.5px;
 				}
-
-		.row-project {
-			margin-top: -25px;
-			margin-left: -25px;
-		}
-
-			.row-project > * {
-				padding: 25px 0 0 25px;
-			}
 
 		.row {
 			margin-top: -25px;
@@ -2019,69 +2016,77 @@ input, select, textarea {
 		width: 100%;
 	}
 
-		.box-pj.style2 > table {
+		.box-pj.style2 > div {
+			display: inline-block;
+		}
+
+		.box-pj.style2 > .dv-title {
+			width: 100%;
+			margin-bottom: 1em;
+		}
+
+		.box-pj.style2 > .dv-con {
 			width: 100%;
 		}
 
-			.box-pj.style2 table h3 {
-				margin-bottom: 1.25em;
+			.box-pj.style2 > .dv-con > .dv-img {
+				float: left;
+				width: 35%;
+				margin-right: 1%;
 			}
 
-			.box-pj.style2 table tbody {
-				text-align: left;
-			}
-			
-				.box-pj.style2 table tbody tr td {
-					font-size: x-larger;
+				.box-pj.style2 > .dv-con > .dv-img > a > img {
+					width: 100%;
 				}
 
-					.box-pj.style2 table tbody tr td.pj-img {
-						width: 35%;
-						vertical-align: top;
-						padding-right: 1em;
+			.box-pj.style2 > .dv-con > .dv-info {
+				width: 64%;
+				float: right;;
+				;
+			}
+
+				.box-pj.style2 > .dv-con > .dv-info > table {
+					width: 100%;
+				}
+
+					.box-pj.style2 > .dv-con > .dv-info > table > tbody {
+						text-align: left;
+					}
+					
+					.box-pj.style2 > .dv-con > .dv-info > table > tbody > tr > td {
+						font-size: x-larger;
 					}
 
-						.box-pj.style2 table tbody tr td.pj-img .image {
-							width: 100%;
+						.box-pj.style2 > .dv-con > .dv-info > table > tbody > tr > td > ul {
+							list-style: none;
 						}
 
-					.box-pj.style2 table tbody tr td.left {
+						.box-pj.style2 > .dv-con > .dv-info > table > tbody > tr > td > ul.ul-info {
+							list-style: square;
+							list-style-position: inside;
+						}
+					
+					.box-pj.style2 > .dv-con > .dv-info > table > tbody > tr > td.left {
 						text-align: right;
 					}
 
-					.box-pj.style2 table tbody tr td > ul {
-						list-style: none;
-					}
-
-					.box-pj.style2 table tbody tr td.bts {
-						text-align: center;
-					}
-
-						.box-pj.style2 table tbody tr td.bts .bt-remove {
-							display: none;
-						}
-
-		/* 
-		.box-pj.style2 .slide-dv-active,
-		.box-pj.style2 .web-dv-active,
-		.box-pj.style2 .game-dv-active {
-			display: block;
-		} */
-
-		.box-pj.style2 > .slide-dv,
-		.box-pj.style2 > .web-dv,
-		.box-pj.style2 > .game-dv {
-			display: none;
+		.box-pj.style2 > .dv-bts {
 			width: 100%;
-			padding: 0.5em;
 		}
 
-			.box-pj.style2 > .web-dv > .video {
-				width: 100%;
+		.box-pj.style2 > .slide-dv,
+		.box-pj.style2 > .video-dv {
+			display: none;
+			width: 100%;
+			margin-top: 2em;
+		}
+
+			.box-pj.style2 > .video-dv > video {
+				width: 800px;
 			}
 
-			.box-pj.style2 > .game-dv > .video{
-				width: 70%;
+			.box-pj.style2 > .video-dv > video#web-vd {
+				width: 100%;
 			}
 
 			.box-pj.style2 > .slide-dv > .slideshow-container {
@@ -2462,6 +2467,11 @@ input, select, textarea {
 					margin: 0;
 				}
 
+		/* skills info div 크기 1280 */
+			.container > .row > .col-12 > .dv-skills > .dv-skills-info {
+				padding: 0 7% 0 7%;
+			}
+
 	}
 
 /* Medium */
@@ -2478,6 +2488,36 @@ input, select, textarea {
 				#top .image {
 					margin: 0 auto 2em auto;
 				}
+
+		/* project dv 크기 */
+
+			#pj-img {
+				width: 100%;
+			}
+				#pj-img img {
+					margin: 0 auto 2em auto;
+				}
+
+			#pj-info {
+				width: 100%;
+			}
+
+
+		/* slide dot 크기 980 */
+			.box-pj.style2 .slide-dv .dot {
+				height: 13px;
+				width: 13px;
+			}
+		
+		/* slide text 크기 980 */
+			.box-pj.style2 .slide-dv .mySlides.fade .text {
+				font-size: 16px;
+			}
+			
+		/* game 비디오 크기 max980 */
+		#game-vd {
+			width: 90%;
+		}
 
 	}
 
@@ -2693,4 +2733,25 @@ input, select, textarea {
 						margin-top: 0;
 					}
 
+		/* skills info div 크기 736 */
+			.container > .row > .col-12 > .dv-skills > .dv-skills-info {
+				padding: 0 15% 0 15%;
+			}
+
+		/* slide dot 크기 736 */
+			.box-pj.style2 .slide-dv .dot {
+				height: 11px;
+				width: 11px;
+			}
+
+		/* slide text 크기 736 */
+			.box-pj.style2 .slide-dv .mySlides.fade .text {
+				font-size: 12px;
+			}
+
+
+		/* game 비디오 크기 736 */
+			#game-vd {
+				width: 100%;
+			}
 	}
