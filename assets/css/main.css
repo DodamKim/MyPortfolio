@@ -2081,7 +2081,7 @@ input, select, textarea {
 			margin-top: 2em;
 		}
 
-		.box-pj.style2 > .gcode-dv > iframe {
+		.box-pj.style2 > .add-dv > .gcode-iframe {
 			width:100%; 
 			height:500px;
 			border:0;
