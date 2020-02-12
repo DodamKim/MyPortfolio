@@ -2075,17 +2075,25 @@ input, select, textarea {
 		}
 
 		.box-pj.style2 > .slide-dv,
-		.box-pj.style2 > .video-dv {
+		.box-pj.style2 > .add-dv{
 			display: none;
 			width: 100%;
 			margin-top: 2em;
 		}
 
-			.box-pj.style2 > .video-dv > video {
+		.box-pj.style2 > .gcode-dv > iframe {
+			width:100%; 
+			height:500px;
+			border:0;
+			border-radius: 4px;
+			overflow:hidden;
+		}
+
+			.box-pj.style2 > .add-dv > video {
 				width: 800px;
 			}
 
-			.box-pj.style2 > .video-dv > video#web-vd {
+			.box-pj.style2 > .add-dv > video#web-vd {
 				width: 100%;
 			}
 
