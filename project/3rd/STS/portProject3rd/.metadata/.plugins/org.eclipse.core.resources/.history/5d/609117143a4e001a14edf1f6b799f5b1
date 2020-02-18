@@ -1,0 +1,9 @@
+package com.port.craftMarche.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class MarcheController {
+
+	
+}
