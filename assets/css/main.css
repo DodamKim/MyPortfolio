@@ -271,6 +271,7 @@ input, select, textarea {
 				box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.5), inset 0px 2px 1px 0px rgba(255, 255, 255, 0.75);
 				background-color: #282828;
 				padding: 0.8em 1.35em 0.8em 1.35em;
+				
 				font-size: 0.9em;
 				max-width: 10em;	
 				margin-bottom: 3em;			
